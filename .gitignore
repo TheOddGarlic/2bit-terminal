@@ -1,0 +1,5 @@
+node_modules/
+err.json
+err.txt
+inde.js
+package-lock.json
