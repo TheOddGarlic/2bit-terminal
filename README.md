@@ -3,7 +3,7 @@
 You can also add it to your Windows Terminal (new one) settings.\
 And it will appear here:\
 ![image not found](images/a.PNG) \
-Example Windows Terminal Settings: \
+Example Windows Terminal Settings:
 ```json
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
