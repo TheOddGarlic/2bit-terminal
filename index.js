@@ -87,9 +87,10 @@ input.key('enter', function () {
   }
 });
 
-// input.key(["C-k"], () => {
-//     this.value = ";channel "
-// });
+input.key('tab', () => {
+  input.setValue(";channel ");
+  screen.render();
+});
 
 screen.key(['escape', 'C-c'], function () {
   return process.exit(0);
@@ -123,7 +124,7 @@ ws.on("message", (msg) => {
     }
     if (msg.type == "channels") {
       if (debug) {
-        messageList.addItem("> Channel update // TODO: make this work.");
+        messageList.addItem("> Updating channels...");
         messageList.scrollTo(100);
         screen.render();
       }
@@ -135,6 +136,7 @@ ws.on("message", (msg) => {
     }
     if (msg.type == "update") {
       messageList.addItem("> Updating messages...");
+      screen.render();
       msg.messages.forEach(m => newMessage(m));
     }
   } else {
@@ -208,9 +210,9 @@ const replaceItalics = replaceRegex(italicsRegex, italicsReplacer);
 function newMessage(msg) {
   messageList.addItem(
     `${msg.author.badges
-        .filter(b => b.shown == true)
-        .map(b => b.emoji)
-        .join(" ")} ${parseInt(msg.date.substr(16 , msg.date.length - 60)) + 3}${msg.date.substr(18, msg.date.length - 56)} ${msg.author.username}: ${blessed.helpers.parseTags(replaceBolds(replaceItalics(msg.message)))}`.trim()
+          .filter(b => b.shown == true)
+          .map(b => b.emoji)
+          .join(" ")} ${parseInt(msg.date.substr(16 , msg.date.length - 60)) + 3}${msg.date.substr(18, msg.date.length - 56)} ${msg.author.username}: ${blessed.helpers.parseTags(replaceBolds(replaceItalics(msg.message)))}`.trim()
   );
   messageList.scrollTo(100);
   screen.render();
