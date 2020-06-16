@@ -240,7 +240,7 @@ function sendMessage(message) {
       messageList.addItem(blessed.helpers.parseTags("{bold}>> ;reverse{/bold} : Reverses the following text and sends it."));
       messageList.addItem(blessed.helpers.parseTags("{bold}>> ;ping{/bold} : Pings the chat server."));
       messageList.addItem(blessed.helpers.parseTags("{bold}>> ;debug{/bold} : Enables debug output."));
-      messageList.addItem(blessed.helpers.parseTags("{bold}>> ;lenny{/bold} | {bold};shrug{/bold} : Funny face :D"));
+      messageList.addItem(blessed.helpers.parseTags("{bold}>> ;lenny{/bold} | {bold};shrug{/bold} : Funny faces :D"));
       messageList.addItem(blessed.helpers.parseTags("{bold}>> ;tableflip{/bold} | {bold};unflip{/bold} : Tables :DD"));
       messageList.addItem(blessed.helpers.parseTags("{bold}>> ;channel{/bold} : Changes the channel to the given channel name. Some channels may require permissions or passwords."));
       messageList.addItem(blessed.helpers.parseTags("{bold}>> ;channels{/bold} | {bold};channellist{/bold} : Lists channels."));
@@ -259,7 +259,10 @@ function sendMessage(message) {
       screen.render();
       return debug = !debug;
     }
-    if (command == "lenny" || command == "shrug") {
+    if (command == "lenny") {
+      message = "( ͡° ͜ʖ ͡°)";
+    }
+    if (command == "shrug") {
       message = "¯\\_(ツ)_/¯";
     }
     if (command == "tableflip") message = "(╯°□°）╯︵ ┻━┻";
