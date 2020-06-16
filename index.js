@@ -3,7 +3,7 @@ const blessed = require('neo-blessed');
 const fetch = require("node-fetch");
 
 var username = "Muz",
-  password = "PASSWORD",
+  password = "PASS",
   debug = false,
   channels = [];
 
@@ -196,7 +196,7 @@ const replaceRegex = function (regex, replacement) {
 }
 
 const boldsReplacer = function (fullMatch, tagStart, tagContents) {
-  return '{bold}' + tagContents + '{/bold}';
+  return '{white-bg}{black-fg}' + tagContents + '{/black-fg}{/white-bg}';
 }
 
 const italicsReplacer = function (fullMatch, tagStart, tagContents) {
