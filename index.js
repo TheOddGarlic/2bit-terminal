@@ -1,11 +1,9 @@
-// Test
-
 const WebSocket = require('ws');
 const blessed = require('neo-blessed');
 const fetch = require("node-fetch");
 
 var username = "Muz",
-  password = "PA$$WORD",
+  password = "PASSWORD",
   debug = false,
   channels = [];
 
@@ -14,6 +12,7 @@ let ws = new WebSocket("wss://2bit.team/");
 const screen = blessed.screen({
   smartCSR: true,
   title: '2 Bit Terminal',
+  fullUnicode: true
 });
 
 var messageList = blessed.list({
@@ -129,7 +128,7 @@ ws.on("message", (msg) => {
         screen.render();
       }
       msg.channels.forEach((channel) => {
-        channels.push("#" + channel.name)
+        channels.push("#" + channel.name);
         channellist.pushItem("#" + channel.name);
       })
       screen.render();
@@ -210,9 +209,9 @@ const replaceItalics = replaceRegex(italicsRegex, italicsReplacer);
 function newMessage(msg) {
   messageList.addItem(
     `${msg.author.badges
-          .filter(b => b.shown == true)
-          .map(b => b.emoji)
-          .join(" ")} ${parseInt(msg.date.substr(16 , msg.date.length - 60)) + 3}${msg.date.substr(18, msg.date.length - 56)} ${msg.author.username}: ${blessed.helpers.parseTags(replaceBolds(replaceItalics(msg.message)))}`.trim()
+        .filter(b => b.shown == true)
+        .map(b => b.emoji)
+        .join(" ")} ${parseInt(msg.date.substr(16 , msg.date.length - 60)) + 3}${msg.date.substr(18, msg.date.length - 56)} ${msg.author.username}: ${blessed.helpers.parseTags(replaceBolds(replaceItalics(msg.message)))}`.trim()
   );
   messageList.scrollTo(100);
   screen.render();
