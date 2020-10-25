@@ -1,3 +1,4 @@
+# ARCHIVED, 2BIT CHAT IS NO LONGER A THING.
 # 2Bit Terminal
 `npm i && node .`\
 You can also add it to your Windows Terminal (new one) settings.\
